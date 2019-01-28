@@ -43,9 +43,9 @@ Each provider has its own advantages and disadvntages to consider but for our us
 
 <a name='footnote_1'>[1]</a> Linus Torvalds started writing Git on April 3rd, it was then hosting its own source code by April 7th ([source](https://marc.info/?l=git&m=117254154130732)), and then was hosting the entire Linux kernel (2.6.12-rc2) by April 16th.  
 <a name='footnote_2'>[2]</a> According to the spike in 2005 on the Linux kernel's [code frequency graph on Github](https://github.com/torvalds/linux/graphs/code-frequency), which is actually so large it breaks the rendering of the scale (each division is 1 million lines of code).  
-<a name='footnote_3'>[3]</a> ~14,500 people posted on the Linux kernel mailing list between 1995 and 2000, according to [this report](https://web.archive.org/web/20070927194148/http://pascal.case.unibz.it/retrieve/3302/lee00linux.pdf).
-<a style="line-height:1px" name='footnote_4'>[4]</a> For example, GitHub offer the free [student developer pack](https://education.github.com/pack) which provides a lot of resources on third-party plugins and graphical interfaces to Git, and BitBucket provide their own [BitBucket education](https://bitbucket.org/product/education) accounts.
-<a name='footnote_5'>[5]</a> When Microsoft acquired GitHub in late 2018, giving them soft power over a large majority of open source software, anyone who objected to [Microsoft's business practices](https://en.wikipedia.org/wiki/Embrace,_extend,_and_extinguish) could just relocate their code.
+<a name='footnote_3'>[3]</a> ~14,500 people posted on the Linux kernel mailing list between 1995 and 2000, according to [this report](https://web.archive.org/web/20070927194148/http://pascal.case.unibz.it/retrieve/3302/lee00linux.pdf).  
+<a style="line-height:1px" name='footnote_4'>[4]</a> For example, GitHub offer the free [student developer pack](https://education.github.com/pack) which provides a lot of resources on third-party plugins and graphical interfaces to Git, and BitBucket provide their own [BitBucket education](https://bitbucket.org/product/education) accounts.  
+<a name='footnote_5'>[5]</a> When Microsoft acquired GitHub in late 2018, giving them soft power over a large majority of open source software, anyone who objected to [Microsoft's business practices](https://en.wikipedia.org/wiki/Embrace,_extend,_and_extinguish) could just relocate their code.  
 
 ## Basic usage: single-user repositories
 
