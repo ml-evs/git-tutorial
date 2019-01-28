@@ -1,8 +1,8 @@
-# Basics of version control
+% Basics of version control
+% Matthew Evans
+% Part II Computational Physics, Lent 2019
 
-*Matthew Evans*  
-**Part II Computational Physics, Lent 2019**  
-<https://github.com/ml-evs/part2-computing-git-tutorial>
+This content is hosted at <https://github.com/ml-evs/part2-computing-git-tutorial> under the MIT license. Any queries/corrections can be raised as issues/pull requests on GitHub.
 
 ## Introduction
 
