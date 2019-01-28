@@ -170,7 +170,7 @@ $if(colorlinks)$
 \usepackage{xcolor}
 $endif$
 \usepackage[dvipsnames]{xcolor}
-\usepackage[colorlinks=true, linkcolor=BlueViolet, anchorcolor=BlueViolet, urlcolor=BlueViolet, citecolor=BlueViolet]{hyperref}
+\usepackage[colorlinks=true, linkcolor=Cerulean, anchorcolor=Cerulean, urlcolor=Cerulean, citecolor=Cerulean]{hyperref}
 \hypersetup{
 $if(title-meta)$
             pdftitle={$title-meta$},
@@ -348,20 +348,26 @@ $endif$
 \usepackage{color}
 
 \definecolor{mygreen}{rgb}{0,0.6,0}
-\definecolor{mygray}{rgb}{0.9,0.9,0.9}
+\definecolor{mygray}{rgb}{0.95,0.95,0.95}
 \definecolor{mymauve}{rgb}{0.58,0,0.82}
 
 \lstset{
-  backgroundcolor=\color{mygray},   % choose the background color; you must add \usepackage{color} or \usepackage{xcolor}; should come as last argument
+  %backgroundcolor=\color{mygray},   % choose the background color; you must add \usepackage{color} or \usepackage{xcolor}; should come as last argument
   basicstyle=\footnotesize\ttfamily\color{RubineRed},        % the size of the fonts that are used for the code
   breakatwhitespace=false,         % sets if automatic breaks should only happen at whitespace
+  backgroundcolor=\color{mygray},
   breaklines=true,                 % sets automatic line breaking
-  commentstyle=\color{mygreen},    % comment style
-  firstnumber=1000,                % start line enumeration with line 1000
-  %frame=L,	                   % adds a frame around the code
-  tabsize=4,	                   % sets default tabsize to 2 spaces
-  title=\lstname                   % show the filename of files included with \lstinputlisting; also try caption instead of title
-}
+  keepspaces=false,
+  showspaces=false,
+  showtabs=false,
+  showstringspaces=false,
+  tabsize=4,
+  mathescape=false,
+  commentstyle=\color{black},
+  rulecolor=\color{black},
+  frame=single,
+  keywordstyle=,
+  }
 
 \begin{document}
 $if(title)$
