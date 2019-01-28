@@ -41,15 +41,6 @@ Each provider has its own advantages and disadvntages to consider but for our us
 - Hashing - first hash collision
 - descriptive tag of incremental change.
 
-[^git]: Linus Torvalds started writing Git on April 3rd, it was then hosting its own source code by April 7th ([source](https://marc.info/?l=git&m=117254154130732)), and then was hosting the entire Linux kernel (2.6.12-rc2) by April 16th.  
-
-[^lines]: According to the spike in 2005 on the Linux kernel's [code frequency graph on Github](https://github.com/torvalds/linux/graphs/code-frequency), which is actually so large it breaks the rendering of the scale (each division is 1 million lines of code).
-
-[^devs]: ~14,500 people posted on the Linux kernel mailing list between 1995 and 2000, according to [this report](https://web.archive.org/web/20070927194148/http://pascal.case.unibz.it/retrieve/3302/lee00linux.pdf).
-
-[^students]: For example, GitHub offer the free [student developer pack](https://education.github.com/pack) which provides a lot of resources on third-party plugins and graphical interfaces to Git, and BitBucket provide their own [BitBucket education](https://bitbucket.org/product/education) accounts.
-
-[^microsoft]: When Microsoft acquired GitHub in late 2018, giving them soft power over a large majority of open source software, anyone who objected to [Microsoft's business practices](https://en.wikipedia.org/wiki/Embrace,_extend,_and_extinguish) could simply point their repository at a new remote to move all commit history.
 
 ## Basic usage: single-user repositories
 
@@ -137,3 +128,15 @@ Prints the list of historical commit messages and their hashes, either those tha
 - [GitHub student developer pack](https://education.github.com/pack), [BitBucket Education](https://bitbucket.org/product/education) for free stuff.
 - The [Sustainble Software Institute](https://www.software.ac.uk/) is a UK-wide push for improving the quality of research software, along with the [Research Software Engineer](https://rse.ac.uk/) (RSE) movement to create new jobs titles for those in academia working predominantly on software.
 
+
+### Footnotes
+
+[^git]: Linus Torvalds started writing Git on April 3rd, it was then hosting its own source code by April 7th ([source](https://marc.info/?l=git&m=117254154130732)), and then was hosting the entire Linux kernel (2.6.12-rc2) by April 16th.  
+
+[^lines]: According to the spike in 2005 on the Linux kernel's [code frequency graph on Github](https://github.com/torvalds/linux/graphs/code-frequency), which is actually so large it breaks the rendering of the scale (each division is 1 million lines of code).
+
+[^devs]: ~14,500 people posted on the Linux kernel mailing list between 1995 and 2000, according to [this report](https://web.archive.org/web/20070927194148/http://pascal.case.unibz.it/retrieve/3302/lee00linux.pdf).
+
+[^students]: For example, GitHub offer the free [student developer pack](https://education.github.com/pack) which provides a lot of resources on third-party plugins and graphical interfaces to Git, and BitBucket provide their own [BitBucket education](https://bitbucket.org/product/education) accounts.
+
+[^microsoft]: When Microsoft acquired GitHub in late 2018, giving them soft power over a large majority of open source software, anyone who objected to [Microsoft's business practices](https://en.wikipedia.org/wiki/Embrace,_extend,_and_extinguish) could simply point their repository at a new remote to move all commit history.
