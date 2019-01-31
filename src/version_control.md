@@ -87,7 +87,7 @@ No commits yet
 Untracked files:
   (use "git add <file>..." to include in what will be committed)
 
-	moby.txt
+  moby.txt
 
 nothing added to commit but untracked files present (use "git add" to track)
 ```
@@ -104,7 +104,7 @@ No commits yet
 Changes to be committed:
   (use "git rm --cached <file>..." to unstage)
 
-	new file:   moby.txt
+  new file:   moby.txt
 ```
 
 We can now write our first commit, bearing in mind the [advice](#what-is-a-commit) on what makes a good commit message (try to write your own).
@@ -177,7 +177,7 @@ $ sed '1s/.*/Towards the end of November, during a thaw, at nine o' clock one mo
 $ git commit idiot.txt -m 'Fixed mistake where I wrote out Moby Dick instead of The Idiot, like The Idiot I am'
 ``` 
 
-Coming back 5 minutes later, you think that you probably shouldn't have written that commit message, so let's fix that by writing something more suitable, that removes the blame from us.
+Coming back 5 minutes later, you think that you probably shouldn't have written that commit message, so let's fix that by writing something more suitable, that impresses everyone.
 ```
 $ git commit --amend
 ```
@@ -189,7 +189,7 @@ commit a0e8df557279270a9fa686c0ef7a44e347c189ce (HEAD -> master)
 Author: Matthew Evans <me388@cam.ac.uk>
 Date:   Mon Jan 28 21:40:41 2019 +0000
 
-    Fixed subtle bug in Linux kernel that caused Moby Dick to be written to file instead of The Idiot
+    Fixed subtle bug in Linux kernel (I am very smart) that caused Moby Dick to be written to file instead of The Idiot
 
 commit e2b7ad72976d4c00ab6d0214ab41d3c13869c2dd
 Author: Matthew Evans <me388@cam.ac.uk>
@@ -308,9 +308,31 @@ Does the same as Linux's `mv`, but keeps tracking the file in Git. Otherwise, Gi
 
 #### `rm`
 
-Remove a file from disk, and from any further Git tracking. The history of the file will remain under version control, as well as all previous versions.
+Remove a file from disk, and from any further Git tracking (the deletion of the file will need to be commited). The history of the file will remain under version control, as well as all previous versions.
 
 > `git rm old_file.txt`
+
+
+#### Omissions (non-exhaustive)
+
+Here are some extra Git subcommands that you will eventually find a use for in more complex projects.
+
+#### `branch`
+
+#### `merge`
+
+#### `reset`
+
+#### `revert`
+
+#### `reflog`
+
+#### `bisect`
+
+#### `rebase`
+
+#### `tag`
+
 
 ### Useful links
 
