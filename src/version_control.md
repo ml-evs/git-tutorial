@@ -14,7 +14,7 @@ Put simply, a version control system (VCS) (a.k.a. revision or source control) i
 - Concurrency: the ability to have many people modifying the same collection of files knowing that conflicting modifications can be detected and resolved.
 - History: the ability to attach historical data to your data, such as explanatory comments about the intention behind each change. Even for a programmer working solo, change histories are an important aid to memory; for a multi-person project, they are a vitally important form of communication among developers.
 
-Say you are writing a report; instead of renaming different versions of files `report.tex`, `report_final.tex`, `report_FINAL.tex`, `report_FINALFINAL.tex`, `report_FINAL_abcdef.tex`, ad infinitum, version control systems allow you to save the entire history of a file as a series of staged changes, often called commits or revisions. This may not seem so useful for a linear process such as a single person writing a document, but for the non-linear process of software development, version control is a must. Every single serious software project exists under some form of version control, almost by definition. Learning effective version control techniques is a vital skill, not just careers in the tech industry, but also for producing reproducible code and thus reproducible science.
+Say you are writing a report; instead of renaming different versions of files `report.tex`, `report_final.tex`, `report_FINAL.tex`, `report_FINALFINAL.tex`, `report_FINAL_abcdef.tex`, ad infinitum, version control systems allow you to save the entire history of a file as a series of staged changes, often called commits or revisions. This may not seem so useful for a linear process such as a single person writing a document, but for the non-linear process of software development, version control is a must. Every single serious software project exists under some form of version control, almost by definition. Learning effective version control is a vital skill, not just for careers in the tech industry, but also for producing sustainable software and thus reproducible science.
 
 The aim of this tutorial is to teach basic concepts of version control that you might consider using for the coursework. A few hours of investment, and maybe some moments of confusion, will hopefully lead to a productivity boost. We shall work with the Git (`git`) version control system as, at the time of writing this, it dominates the market, with Subversion (`svn`) and Mercurial (`hg`) lagging behind, as evidenced by e.g. [Google trends](https://g.co/trends/CECvA).
 
@@ -23,6 +23,8 @@ The aim of this tutorial is to teach basic concepts of version control that you 
 Git was created by Linus Torvalds in 2005 <sup href='#git'>[^git]</sup> to manage the source code of the Linux kernel, with the requirements that it be fast, distributed and secure. At the time, the Linux kernel was 6 million lines long <sup href=#lines>[^lines]</sup>, with thousands of developers worldwide <sup href='#devs'>[^devs]</sup>; whilst famous for creating Linux, many argue that Git is Linus Torvalds' greatest technical achievement.
 
 `git`, like its forebears `svn` and `hg`, is what is called a distributed version control system. This means that there is no "master copy" of a project, and instead the entire history of a project is mirrored on the computer of every developer (and potentially user). This becomes extremely useful when multiple people are actively developing a project for reasons we shall touch on later.
+
+TODO: Add paragraph about git's internal data structure
 
 Git has somewhat of a reputation for being difficult to learn and master, due its 21 different subcommands, and their myriad options. Most simple use cases, however, require only a few of these commands. A complete and in-depth documentation of their operation can be found at the command-line by running `git help <subcommand>`, whilst a brief summary on the subsection of Git that we will discuss can be found in the [cheatsheet](#basic-subcommand-cheatsheet) in the appendix. Several graphical user interfaces (GUIs) also exist for Git, which you may prefer, though I do not have one to recommend.
 
@@ -34,15 +36,23 @@ In the past, developers would often directly push to or pull from each other's l
 
 Each provider has its own advantages and disadvntages to consider but for our usage they are all broadly similar (and all allow unlimited private repos for free, often providing extra benefits for students [^students]). One of the useful features of distributed VCS is that you can easily transfer your entire code history to a different provider, since you are constantly mirroring your own version of the project locally [^microsoft].
 
-
-
 ### What is a commit?
 
-- Hashing - first hash collision
-- descriptive tag of incremental change.
+A commit (a.k.a. revision, changeset) is a set of file modifications grouped under the same user-provided descriptive tag and randomly-generated hash, providing a snapshot in time of the entire repository
+
+
+- How often should I commit?
+    * Changes to commit can be as fine or coarse grained as necessary, depending on personal preference
+    * When writing a new code, the first commit might not occur until
+- What makes a good commit message?
+    * Simply a short description of the changes made. For example, good messages include "fixed typo in example.cpp", "added diffraction plotting function", "got ODE solver working" and "attempted second example", but "fixed example", "added function", "code now working" and "end of first practical" are less good. If you want to write a long description, write a short description as the first line, then use new lines to add detail.
+- Can I edit previous commits?
+- Can I undo a commit?
 
 
 ## Examples
+
+You may find these examples easier to follow online, where text can be copied more easily: <www.github.com/ml-evs/part2-computing-git-tutorial>.
 
 ### Basic usage: single-user repositories
 
@@ -50,26 +60,26 @@ Each provider has its own advantages and disadvntages to consider but for our us
 
 First things first, check that you have Git installed on the machine you're using for these tutorials. On Linux/\*nix (including Windows Subsystem for Linux), at the command-line:
 
-```bash
-# git --version
+```
+$ git --version
 git version 2.20.1
 ```
 
 If you are using Windows directly, you need Git installed to reach this shell.
 
 The next thing to do is register who you are to Git:
-```bash
-#> git config --global user.name "<your_name_here>"
-#> git config --global user.email "<your_email_here>"
+```
+$ git config --global user.name "<your_name_here>"
+$ git config --global user.email "<your_email_here>"
 ```
 
 #### A simple example
 
 In this example, we will make a local Git repository, add some files to it, commit them, make some changes, then commit the changes. Very exciting. First, lets make a file with some text in it, by reciting Moby Dick from memory...
 
-```bash
-#> echo "Call me Moby. Some years ago - never mind how long precisely - having little or no money in my purse, and nothing particular to interest me on shore, I thought I would sail about a little and see the water part of the world." >> moby.txt
-#> git status
+```
+$ echo "Call me Moby. Some years ago - never mind how long precisely - having little or no money in my purse, and nothing particular to interest me on shore, I thought I would sail about a little and see the water part of the world." >> moby.txt
+$ git status
 On branch master
 
 No commits yet
@@ -84,9 +94,9 @@ nothing added to commit but untracked files present (use "git add" to track)
 
 As you can see, although the file is in the correct folder, it is not being tracked by Git until we `add` it.
 
-```bash
-#> git add moby.txt
-#> git status
+```
+$ git add moby.txt
+$ git status
 On branch master
 
 No commits yet
@@ -98,15 +108,15 @@ Changes to be committed:
 ```
 
 We can now write our first commit, bearing in mind the [advice](#what-is-a-commit) on what makes a good commit message (try to write your own).
-```bash
-#> git commit
+```
+$ git commit
 ```
 
 Another quick `git status` will show that there is now `nothing to commit, working tree clean`. We're now ready to add the next sentence, which will let us look at a `diff` between the current state of our history (called `HEAD`). Git `diff` will open the diff in `less`, press Q to quit.
 
-```bash
-#> echo "The morning was so damp and misty that it was only with great difficulty that the day succeeded in breaking." >> moby.txt
-#> git diff
+```
+$ echo "The morning was so damp and misty that it was only with great difficulty that the day succeeded in breaking." >> moby.txt
+$ git diff
 diff --git a/moby.txt b/moby.txt
 index c256b41..6a234d6 100644
 --- a/moby.txt
@@ -118,13 +128,13 @@ index c256b41..6a234d6 100644
 
 Let's commit this sentence. If you use `git commit` as before, you will notice that this change has not yet been "staged". We can either run `git add moby.txt` to stage it (useful for commits with many files to be added), or just commit the file directly:
 
-```bash
-#> git commit moby.txt -m 'Added another sentence of Moby Dick from memory'
+```
+$ git commit moby.txt -m 'Added another sentence of Moby Dick from memory'
 ```
 
 What does our commit history look like now?
-```bash
-#> git log
+```
+$ git log
 commit 3efacaf57c09387c701110d73f354286e3d4e669 (HEAD -> master)
 Author: Matthew Evans <me388@cam.ac.uk>
 Date:   Mon Jan 28 21:13:15 2019 +0000
@@ -142,9 +152,9 @@ You will notice that `git log` provides us with a long commit hash, who made the
 
 Those of you who have ever read a book might realise that my memory of Moby Dick isn't very good, so let's fix that. Either edit `moby.txt` in your editor, or use the following `sed` command to fix the first sentence.
 
-```bash
-#> sed -i 's/Moby/Ishmael/g' moby.txt
-#> git diff
+```
+$ sed -i 's/Moby/Ishmael/g' moby.txt
+$ git diff
 diff --git a/moby.txt b/moby.txt
 index 6a234d6..e966d0d 100644
 --- a/moby.txt
@@ -161,20 +171,20 @@ If you're paying attention to the important stuff in this tutorial (the literatu
 
 First, let's rename our file to something more appropriate, using `git mv` to ensure that the history of the file is preserved across the rename (using just Linux's `mv` would make Git think we had deleted the file and made a completely new unrelated file). We will then use a magic `sed` one-liner to replace the first line in our file with the correct sentence from The Idiot, then commit the file in anger at how we could have been so stupid.
 
-```bash
-#> git mv moby.txt idiot.txt
-#> sed '1s/.*/Towards the end of November, during a thaw, at nine o' clock one morning, a train on the Warsaw and Petersburg railway was approaching the latter city at full speed.' idiot.txt
-#> git commit idiot.txt -m 'Fixed mistake where I wrote out Moby Dick instead of The Idiot, like a ****ing idiot'
+```
+$ git mv moby.txt idiot.txt
+$ sed '1s/.*/Towards the end of November, during a thaw, at nine o' clock one morning, a train on the Warsaw and Petersburg railway was approaching the latter city at full speed.' idiot.txt
+$ git commit idiot.txt -m 'Fixed mistake where I wrote out Moby Dick instead of The Idiot, like The Idiot I am'
 ``` 
 
 Coming back 5 minutes later, you think that you probably shouldn't have written that commit message, so let's fix that by writing something more suitable, that removes the blame from us.
-```bash
-#> git commit --amend
+```
+$ git commit --amend
 ```
 
 Just to prove our repository has kept all of its history, and get the `diff` from our first commit:
-```bash
-#> git log
+```
+$ git log
 commit a0e8df557279270a9fa686c0ef7a44e347c189ce (HEAD -> master)
 Author: Matthew Evans <me388@cam.ac.uk>
 Date:   Mon Jan 28 21:40:41 2019 +0000
@@ -199,7 +209,7 @@ Date:   Mon Jan 28 21:11:23 2019 +0000
 
     Added first sentences of Moby Dick
 
-#> git diff 473e3a
+$ git diff 473e3a
 diff --git a/idiot.txt b/idiot.txt
 new file mode 100644
 index 0000000..9925ab9
@@ -309,9 +319,6 @@ Remove a file from disk, and from any further Git tracking. The history of the f
 - Atlassian (owners of BitBucket) provide a more thorough [cheatsheet of git commands](https://www.atlassian.com/dam/jcr:8132028b-024f-4b6b-953e-e68fcce0c5fa/atlassian-git-cheatsheet.pdf)
 - [GitHub student developer pack](https://education.github.com/pack), [BitBucket Education](https://bitbucket.org/product/education) for free stuff.
 - The [Sustainble Software Institute](https://www.software.ac.uk/) is a UK-wide push for improving the quality of research software, along with the [Research Software Engineer](https://rse.ac.uk/) (RSE) movement to create new jobs titles for those in academia working predominantly on software.
-
-
-### Footnotes
 
 [^git]: Linus Torvalds started writing Git on April 3rd, it was then hosting its own source code by April 7th ([source](https://marc.info/?l=git&m=117254154130732)), and then was hosting the entire Linux kernel (2.6.12-rc2) by April 16th.  
 
