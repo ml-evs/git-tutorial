@@ -2,7 +2,7 @@
 % Matthew Evans
 % Part II Computational Physics, Lent 2019
 
-This content is hosted at <https://github.com/ml-evs/part2-computing-git-tutorial> under the MIT license. Any queries/corrections can be raised as issues/pull requests on GitHub.
+This content is hosted at <https://github.com/ml-evs/part2-computing-git-tutorial> under the MIT license (i.e. do what you want with this material). Any queries/corrections can be raised as issues/pull requests on GitHub.
 
 ## Introduction
 
@@ -38,11 +38,10 @@ Each provider has its own advantages and disadvntages to consider but for our us
 
 ### What is a commit?
 
-A commit (a.k.a. revision, changeset) is a set of file modifications grouped under the same user-provided descriptive tag and randomly-generated hash, providing a snapshot in time of the entire repository
-
+A commit (a.k.a. revision, changeset) is a set of file modifications grouped under the same user-provided descriptive comment and a randomly-generated hash, providing a snapshot in time of the entire repository. Here are some practical questions you might be asking about commits:
 
 - How often should I commit?
-    * Changes to commit can be as fine or coarse grained as necessary, depending on personal preference
+    * The changes to code that you commit can be as fine or coarse-grained as necessary, depending on personal preference.
     * When writing a new code, the first commit might not occur until
 - What makes a good commit message?
     * Simply a short description of the changes made. For example, good messages include "fixed typo in example.cpp", "added diffraction plotting function", "got ODE solver working" and "attempted second example", but "fixed example", "added function", "code now working" and "end of first practical" are less good. If you want to write a long description, write a short description as the first line, then use new lines to add detail.
@@ -50,11 +49,9 @@ A commit (a.k.a. revision, changeset) is a set of file modifications grouped und
 - Can I undo a commit?
 
 
-## Examples
+## Worked examples
 
-You may find these examples easier to follow online, where text can be copied more easily: <www.github.com/ml-evs/part2-computing-git-tutorial>.
-
-### Basic usage: single-user repositories
+You may find these examples easier to follow online, where text can be copied more easily: <https://www.github.com/ml-evs/part2-computing-git-tutorial>.
 
 #### Setup
 
@@ -73,7 +70,7 @@ $ git config --global user.name "<your_name_here>"
 $ git config --global user.email "<your_email_here>"
 ```
 
-#### A simple example
+#### Example 1.1: a contrived local repository
 
 In this example, we will make a local Git repository, add some files to it, commit them, make some changes, then commit the changes. Very exciting. First, lets make a file with some text in it, by reciting Moby Dick from memory...
 
@@ -228,9 +225,95 @@ index c256b41..0000000
 ```
 (Note how we only needed to use the first 6 characters of the commit hash when running `git`. Alternatively we could have used `git diff HEAD~4` to reference the commit 4 behind the current `HEAD`.
 
-#### Remote version control
+#### Example 1.2: Remote version control
+
+Our aim is now to take a repository to the cloud. For this, you will need an account with your favourite cloud VCS, for example GitHub, Bitbucket or GitLab. For the sake of this example, I will follow the live demo from the lecture and make a repository for my solutions to the exercises on GitHub.
+
+Every provider should have a simple interface for creating a new repository,
+which we can give any name we want. GitHub tells me that
+`part2-computing-exercises` is a fine name, we can select whether we want to the
+repository to be private or public, and then we can decide whether we want to
+select a license for the code <sup href='#license'>[^license]</sup>. After
+creating the remote repository, we will be provided with a url and some
+instructions on how to set up our local copy; this example will expand those
+instructions below.
+
+
+Now, on our local machine, we navigate to the top-level folder that we want to track with version control, which in my case, has sub-directories for each exercise.
+
+```
+$ ls 
+exercise1  exercise2  exercise3a  exercise3b
+```
+
+We now simply execute `git init` to initialise the local Git repository.
+
+``` 
+$ git init
+Initialized empty Git repository in /home/matthew/documents/teaching/part_II/computing/part2-computing-exercises/.git/
+```
+
+You should see that the directory `.git` has been made (it will be hidden)
+which contains all of the objects Git uses to track your files.
+
+```
+$ ls .git
+branches  config  description  HEAD  hooks  info  objects  refs
+```
+
+A call of `git status` will tell us that we are on the master branch, have no
+commits, and some untracked files. In order to begin tracking files in the
+`exercise1/` folder, we "stage" them for comitting using `git add`:
+
+```
+$ git add exercise1
+$ git status
+$ git status
+On branch master
+
+No commits yet
+
+Changes to be committed:
+  (use "git rm --cached <file>..." to unstage)
+
+	new file:   exercise1/README.md
+	new file:   exercise1/cornu.pdf
+	new file:   exercise1/diffraction_D_0.3m.pdf
+	new file:   exercise1/diffraction_D_0.5m.pdf
+	new file:   exercise1/diffraction_D_1.0m.pdf
+	new file:   exercise1/sine_nd_mc.pdf
+	new file:   exercise1/supp_task2.py
+	new file:   exercise1/task1.py
+	new file:   exercise1/task2.py
+
+```
+
+The files are now ready to be commited, and a simple `git commit` will bring up
+the editor for us to enter our commit message. 
+
+> Notice how only the core source files/outputs are included in the repository.
+> You don't want to add "cruft" to your repository, such as `__pycache__/` folders or `*.pyc`
+> files. To ignore these automatically, you can create a file called
+> `.gitignore` that contains the above strings on separate lines to ignore them
+> forever.
+
+We should now tell our local Git repository where it's remote server is. As
+stated in the GitHub instructions, we do this using the following command:
+
+```
+$ git remote add origin https://github.com/ml-evs/part2-computing-exercises.git
+```
+
+Finally, we can now push our first commit to GitHub's servers.
+
+```
+$ git push -u origin master
+```
+
 
 ## More advanced usage
+
+Coming soon...?
 
 ### Branching, merging and collaboration
 
@@ -317,29 +400,26 @@ Remove a file from disk, and from any further Git tracking (the deletion of the 
 
 Here are some extra Git subcommands that you will eventually find a use for in more complex projects.
 
-#### `branch`
-
-#### `merge`
-
-#### `reset`
-
-#### `revert`
-
-#### `reflog`
-
-#### `bisect`
-
-#### `rebase`
-
-#### `tag`
+- `branch`
+- `merge`
+- `reset`
+- `revert`
+- `reflog`
+- `bisect`
+- `rebase`
+- `tag`
 
 
 ### Useful links
 
 - The [Git website](https://git-scm.com/) has lots of useful resources for learning Git in more detail.
+- List of GUIs for Git on the [Git website](https://git-scm.com/downloads/guis).
 - The Git source code is itself hosted on [Github](https://github.com/git/git).
 - Atlassian (owners of BitBucket) provide a more thorough [cheatsheet of git commands](https://www.atlassian.com/dam/jcr:8132028b-024f-4b6b-953e-e68fcce0c5fa/atlassian-git-cheatsheet.pdf)
 - [GitHub student developer pack](https://education.github.com/pack), [BitBucket Education](https://bitbucket.org/product/education) for free stuff.
+- For open source projects, [how to choose a software license](https://choosealicense.com/).
+- The [Journal of Open Source Software (JOSS)](https://joss.theoj.org) takes submissions as git
+  repositories and uses GitHub's issue tracker for the [review process](https://github.com/openjournals/joss-reviews).
 - The [Sustainble Software Institute](https://www.software.ac.uk/) is a UK-wide push for improving the quality of research software, along with the [Research Software Engineer](https://rse.ac.uk/) (RSE) movement to create new jobs titles for those in academia working predominantly on software.
 
 [^git]: Linus Torvalds started writing Git on April 3rd, it was then hosting its own source code by April 7th ([source](https://marc.info/?l=git&m=117254154130732)), and then was hosting the entire Linux kernel (2.6.12-rc2) by April 16th.  
@@ -351,3 +431,5 @@ Here are some extra Git subcommands that you will eventually find a use for in m
 [^students]: For example, GitHub offer the free [student developer pack](https://education.github.com/pack) which provides a lot of resources on third-party plugins and graphical interfaces to Git, and BitBucket provide their own [BitBucket education](https://bitbucket.org/product/education) accounts.
 
 [^microsoft]: When Microsoft acquired GitHub in late 2018, giving them soft power over a large majority of open source software, anyone who objected to [Microsoft's business practices](https://en.wikipedia.org/wiki/Embrace,_extend,_and_extinguish) could simply point their repository at a new remote to move all commit history.
+
+[^license]: This will put the text of a particular legally-binding code license in the main folder of our repository. See [choosealicense.com](https://choosealicense.com) for tips as to which license is most suitable for you.
