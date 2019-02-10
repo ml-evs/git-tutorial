@@ -310,6 +310,12 @@ Finally, we can now push our first commit to GitHub's servers.
 $ git push -u origin master
 ```
 
+If you want to investigate GitHub's interface for e.g. listing commits,
+providing diffs, creating issues and making pull requests, feel free to look at
+the repository for this tutorial, https://github.com/ml-evs/part2-computing-git-tutorial. 
+If you spot any mistakes or typos, you could even fork the repository and make a
+pull request!
+
 
 ## More advanced usage
 
