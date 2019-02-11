@@ -24,9 +24,10 @@ Git was created by Linus Torvalds in 2005 <sup href='#git'>[^git]</sup> to manag
 
 `git`, like its forebears `svn` and `hg`, is what is called a distributed version control system. This means that there is no "master copy" of a project, and instead the entire history of a project is mirrored on the computer of every developer (and potentially user). This becomes extremely useful when multiple people are actively developing a project for reasons we shall touch on later.
 
-TODO: Add paragraph about git's internal data structure
-
 Git has somewhat of a reputation for being difficult to learn and master, due its 21 different subcommands, and their myriad options. Most simple use cases, however, require only a few of these commands. A complete and in-depth documentation of their operation can be found at the command-line by running `git help <subcommand>`, whilst a brief summary on the subsection of Git that we will discuss can be found in the [cheatsheet](#basic-subcommand-cheatsheet) in the appendix. Several graphical user interfaces (GUIs) also exist for Git, which you may prefer, though I do not have one to recommend.
+
+Without going into detail, Git calculates *hashes* (SHA-1<sup href='#sha1'>[^sha1]</sup>) of the files it tracks and uses them to quickly compare files. The files themselves are compressed and stored as changes relative to one another (even so, the `.git` folder can become rather large). If you are interested in what Git is doing under the hood, have a look at [Chapter 10 of Pro Git](https://git-scm.com/book/en/v2/Git-Internals-Plumbing-and-Porcelain).
+
 
 ### What is a repository?
 
@@ -38,7 +39,9 @@ Each provider has its own advantages and disadvntages to consider but for our us
 
 ### What is a commit?
 
-A commit (a.k.a. revision, changeset) is a set of file modifications grouped under the same user-provided descriptive comment and a randomly-generated hash, providing a snapshot in time of the entire repository. Here are some practical questions you might be asking about commits:
+A commit (a.k.a. revision, changeset) is a set of file modifications grouped under the same user-provided descriptive comment and a randomly-generated hash, providing a snapshot in time of the entire repository. It's important to note that commits stack on top of each other (in the sense of stack memory: last in, first out).
+
+Here are some practical questions you might ask about commits:
 
 - How often should I commit?
     * The changes to code that you commit can be as fine or coarse-grained as necessary, depending on personal preference.
@@ -46,7 +49,11 @@ A commit (a.k.a. revision, changeset) is a set of file modifications grouped und
 - What makes a good commit message?
     * Simply a short description of the changes made. For example, good messages include "fixed typo in example.cpp", "added diffraction plotting function", "got ODE solver working" and "attempted second example", but "fixed example", "added function", "code now working" and "end of first practical" are less good. If you want to write a long description, write a short description as the first line, then use new lines to add detail.
 - Can I edit previous commits?
+    * You can edit the last commit, before pushing, using `git commit --amend`,
+      but not any older commits.
 - Can I undo a commit?
+    * You can revert *to* a commit, so you can "undo" the most recent commit,
+      but you can't undo an older commit.
 
 
 ## Worked examples
@@ -355,7 +362,7 @@ Register the current state of this file with Git, without comitting it (yet).
 
 #### `commit`
 
-Create a hash for the existing changes, and tag that hash with a useful "commit message". If called without a filename as an argument, the commit will include all changes that have been *staged* (call `git status` to check this). The flag `-a` will commit *all* changes to tracked files in the repo. This command will open your editor to write the message (determined by environment variable `EDITOR`); alternatively, the message can be provided at the command line with the `-m` flag (see below).
+Take a snapshot of the current changes, and give that snapshot a descriptive message. If called without a filename as an argument, the commit will include all changes that have been *staged* (call `git status` to check this). The flag `-a` will commit *all* changes to tracked files in the repo. This command will open your editor to write the message (determined by environment variable `EDITOR`); alternatively, the message can be provided at the command line with the `-m` flag (see below).
 
 > `git commit version_control.md -m 'Added "commit" section to the subcommand cheatsheet'`
 
@@ -428,11 +435,16 @@ Here are some extra Git subcommands that you will eventually find a use for in m
   repositories and uses GitHub's issue tracker for the [review process](https://github.com/openjournals/joss-reviews).
 - The [Sustainble Software Institute](https://www.software.ac.uk/) is a UK-wide push for improving the quality of research software, along with the [Research Software Engineer](https://rse.ac.uk/) (RSE) movement to create new jobs titles for those in academia working predominantly on software.
 
-[^git]: Linus Torvalds started writing Git on April 3rd, it was then hosting its own source code by April 7th ([source](https://marc.info/?l=git&m=117254154130732)), and then was hosting the entire Linux kernel (2.6.12-rc2) by April 16th.  
+[^git]: Linus Torvalds started writing Git on April 3rd 2005, it was then hosting its own source code by April 7th ([source](https://marc.info/?l=git&m=117254154130732)), and then was hosting the entire Linux kernel (2.6.12-rc2) by April 16th.  
 
 [^lines]: According to the spike in 2005 on the Linux kernel's [code frequency graph on Github](https://github.com/torvalds/linux/graphs/code-frequency), which is actually so large it breaks the rendering of the scale (each division is 1 million lines of code).
 
 [^devs]: ~14,500 people posted on the Linux kernel mailing list between 1995 and 2000, according to [this report](https://web.archive.org/web/20070927194148/http://pascal.case.unibz.it/retrieve/3302/lee00linux.pdf).
+
+[^sha1]: The first SHA-1 "hash collision" (different files contents with the
+  same hash: could allow for malicious file injection) [occured in
+  2017](https://www.theregister.co.uk/2017/02/23/google_first_sha1_collision) so
+  Git is probably going to migrate to a more secure hashing algorithm.
 
 [^students]: For example, GitHub offer the free [student developer pack](https://education.github.com/pack) which provides a lot of resources on third-party plugins and graphical interfaces to Git, and BitBucket provide their own [BitBucket education](https://bitbucket.org/product/education) accounts.
 

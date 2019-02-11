@@ -82,8 +82,6 @@ mirrored on the computer of every developer (and potentially user). This
 becomes extremely useful when multiple people are actively developing a
 project for reasons we shall touch on later.
 
-TODO: Add paragraph about git’s internal data structure
-
 Git has somewhat of a reputation for being difficult to learn and
 master, due its 21 different subcommands, and their myriad options. Most
 simple use cases, however, require only a few of these commands. A
@@ -93,6 +91,14 @@ summary on the subsection of Git that we will discuss can be found in
 the [cheatsheet](#basic-subcommand-cheatsheet) in the appendix. Several
 graphical user interfaces (GUIs) also exist for Git, which you may
 prefer, though I do not have one to recommend.
+
+Without going into detail, Git calculates *hashes*
+(SHA-1<sup href='#sha1'>\[4\]</sup>) of the files it tracks and uses
+them to quickly compare files. The files themselves are compressed and
+stored as changes relative to one another (even so, the `.git` folder
+can become rather large). If you are interested in what Git is doing
+under the hood, have a look at [Chapter 10 of Pro
+Git](https://git-scm.com/book/en/v2/Git-Internals-Plumbing-and-Porcelain).
 
 ### What is a repository?
 
@@ -124,18 +130,20 @@ the [test-driven development](#test-driven-development) section.
 Each provider has its own advantages and disadvntages to consider but
 for our usage they are all broadly similar (and all allow unlimited
 private repos for free, often providing extra benefits for students
-\[4\]). One of the useful features of distributed VCS is that you can
+\[5\]). One of the useful features of distributed VCS is that you can
 easily transfer your entire code history to a different provider, since
 you are constantly mirroring your own version of the project locally
-\[5\].
+\[6\].
 
 ### What is a commit?
 
 A commit (a.k.a. revision, changeset) is a set of file modifications
 grouped under the same user-provided descriptive comment and a
 randomly-generated hash, providing a snapshot in time of the entire
-repository. Here are some practical questions you might be asking about
-commits:
+repository. It’s important to note that commits stack on top of each
+other (in the sense of stack memory: last in, first out).
+
+Here are some practical questions you might ask about commits:
 
   - How often should I commit?
       - The changes to code that you commit can be as fine or
@@ -151,7 +159,11 @@ commits:
         short description as the first line, then use new lines to add
         detail.
   - Can I edit previous commits?
+      - You can edit the last commit, before pushing, using `git commit
+        --amend`, but not any older commits.
   - Can I undo a commit?
+      - You can revert *to* a commit, so you can “undo” the most recent
+        commit, but you can’t undo an older commit.
 
 ## Worked examples
 
@@ -366,7 +378,7 @@ repository, which we can give any name we want. GitHub tells me that
 `part2-computing-exercises` is a fine name, we can select whether we
 want to the repository to be private or public, and then we can decide
 whether we want to select a license for the code
-<sup href='#license'>\[6\]</sup>. After creating the remote repository,
+<sup href='#license'>\[7\]</sup>. After creating the remote repository,
 we will be provided with a url and some instructions on how to set up
 our local copy; this example will expand those instructions below.
 
@@ -480,8 +492,8 @@ Register the current state of this file with Git, without comitting it
 
 #### `commit`
 
-Create a hash for the existing changes, and tag that hash with a useful
-“commit message”. If called without a filename as an argument, the
+Take a snapshot of the current changes, and give that snapshot a
+descriptive message. If called without a filename as an argument, the
 commit will include all changes that have been *staged* (call `git
 status` to check this). The flag `-a` will commit *all* changes to
 tracked files in the repo. This command will open your editor to write
@@ -592,8 +604,8 @@ for in more complex projects.
 
 <!-- end list -->
 
-1.  Linus Torvalds started writing Git on April 3rd, it was then hosting
-    its own source code by April 7th
+1.  Linus Torvalds started writing Git on April 3rd 2005, it was then
+    hosting its own source code by April 7th
     ([source](https://marc.info/?l=git&m=117254154130732)), and then was
     hosting the entire Linux kernel (2.6.12-rc2) by April 16th.
 
@@ -607,20 +619,26 @@ for in more complex projects.
     and 2000, according to [this
     report](https://web.archive.org/web/20070927194148/http://pascal.case.unibz.it/retrieve/3302/lee00linux.pdf).
 
-4.  For example, GitHub offer the free [student developer
+4.  The first SHA-1 “hash collision” (different files contents with the
+    same hash: could allow for malicious file injection) [occured in
+    2017](https://www.theregister.co.uk/2017/02/23/google_first_sha1_collision)
+    so Git is probably going to migrate to a more secure hashing
+    algorithm.
+
+5.  For example, GitHub offer the free [student developer
     pack](https://education.github.com/pack) which provides a lot of
     resources on third-party plugins and graphical interfaces to Git,
     and BitBucket provide their own [BitBucket
     education](https://bitbucket.org/product/education) accounts.
 
-5.  When Microsoft acquired GitHub in late 2018, giving them soft power
+6.  When Microsoft acquired GitHub in late 2018, giving them soft power
     over a large majority of open source software, anyone who objected
     to [Microsoft’s business
     practices](https://en.wikipedia.org/wiki/Embrace,_extend,_and_extinguish)
     could simply point their repository at a new remote to move all
     commit history.
 
-6.  This will put the text of a particular legally-binding code license
+7.  This will put the text of a particular legally-binding code license
     in the main folder of our repository. See
     [choosealicense.com](https://choosealicense.com) for tips as to
     which license is most suitable for you.
