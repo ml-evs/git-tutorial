@@ -127,7 +127,7 @@ making contributions yourself. Additionally, web-based services allow
 for the automation of many useful checks on software, as we shall see in
 the [test-driven development](#test-driven-development) section.
 
-Each provider has its own advantages and disadvntages to consider but
+Each provider has its own advantages and disadvantages to consider but
 for our usage they are all broadly similar (and all allow unlimited
 private repos for free, often providing extra benefits for students
 \[5\]). One of the useful features of distributed VCS is that you can
@@ -192,9 +192,15 @@ The next thing to do is register who you are to Git:
 
 In this example, we will make a local Git repository, add some files to
 it, commit them, make some changes, then commit the changes. Very
-exciting. First, lets make a file with some text in it, by reciting Moby
-Dick from
-    memory…
+exciting. First, make a new folder and tell Git that you want it to be a
+repository:
+
+    $ mkdir git_example_1
+    $ cd git_example_1
+    $ git init
+
+Now, lets make a file with some text in it, by reciting Moby Dick from
+memory…
 
     $ echo "Call me Moby. Some years ago - never mind how long precisely - having little or no money in my purse, and nothing particular to interest me on shore, I thought I would sail about a little and see the water part of the world." >> moby.txt
     $ git status
@@ -379,7 +385,7 @@ repository, which we can give any name we want. GitHub tells me that
 want to the repository to be private or public, and then we can decide
 whether we want to select a license for the code
 <sup href='#license'>\[7\]</sup>. After creating the remote repository,
-we will be provided with a url and some instructions on how to set up
+we will be provided with a URL and some instructions on how to set up
 our local copy; this example will expand those instructions below.
 
 Now, on our local machine, we navigate to the top-level folder that we
@@ -402,7 +408,7 @@ hidden) which contains all of the objects Git uses to track your files.
 
 A call of `git status` will tell us that we are on the master branch,
 have no commits, and some untracked files. In order to begin tracking
-files in the `exercise1/` folder, we “stage” them for comitting using
+files in the `exercise1/` folder, we “stage” them for committing using
 `git add`:
 
     $ git add exercise1
@@ -425,7 +431,7 @@ files in the `exercise1/` folder, we “stage” them for comitting using
         new file:   exercise1/task1.py
         new file:   exercise1/task2.py
 
-The files are now ready to be commited, and a simple `git commit` will
+The files are now ready to be committed, and a simple `git commit` will
 bring up the editor for us to enter our commit message.
 
 > Notice how only the core source files/outputs are included in the
@@ -485,7 +491,7 @@ working directory, since the last commit.
 
 #### `add`
 
-Register the current state of this file with Git, without comitting it
+Register the current state of this file with Git, without committing it
 (yet).
 
 > `git add version_control.md`
@@ -506,11 +512,11 @@ alternatively, the message can be provided at the command line with the
 
 #### `diff`
 
-Show the uncommited (well, strictly unstaged) changes to all files in
+Show the uncommitted (well, strictly unstaged) changes to all files in
 the repository, or for a particular file if requested, as a “diff”
-(i.e. the difference) between the current state and previously commited
-state (by default, can alternatively view changes between any two
-previous commits).
+(i.e. the difference) between the current state and previously
+committed state (by default, can alternatively view changes between any
+two previous commits).
 
 > `git diff version_control.md`
 
@@ -533,7 +539,7 @@ making sure that there are no clashes with local changes.
 #### `checkout`
 
 If called on a file that has been modified, delete those changes and
-rever the state of the file back to the last commit (the `HEAD` state).
+revert the state of the file back to the last commit (the `HEAD` state).
 Also used when branching (see `git help checkout` for more).
 
 > `git checkout version_control.md`
@@ -557,7 +563,7 @@ brand new file with no history.
 #### `rm`
 
 Remove a file from disk, and from any further Git tracking (the deletion
-of the file will need to be commited). The history of the file will
+of the file will need to be committed). The history of the file will
 remain under version control, as well as all previous versions.
 
 > `git rm old_file.txt`
@@ -596,11 +602,11 @@ for in more complex projects.
     takes submissions as git repositories and uses GitHub’s issue
     tracker for the [review
     process](https://github.com/openjournals/joss-reviews).
-  - The [Sustainble Software Institute](https://www.software.ac.uk/) is
-    a UK-wide push for improving the quality of research software, along
-    with the [Research Software Engineer](https://rse.ac.uk/) (RSE)
-    movement to create new jobs titles for those in academia working
-    predominantly on software.
+  - The [Software Sustainability Institute](https://www.software.ac.uk/)
+    is a UK-wide push for improving the quality of research software,
+    along with the [Research Software Engineer](https://rse.ac.uk/)
+    (RSE) movement to create new jobs titles for those in academia
+    working predominantly on software.
 
 <!-- end list -->
 
@@ -620,7 +626,7 @@ for in more complex projects.
     report](https://web.archive.org/web/20070927194148/http://pascal.case.unibz.it/retrieve/3302/lee00linux.pdf).
 
 4.  The first SHA-1 “hash collision” (different files contents with the
-    same hash: could allow for malicious file injection) [occured in
+    same hash: could allow for malicious file injection) [occurred in
     2017](https://www.theregister.co.uk/2017/02/23/google_first_sha1_collision)
     so Git is probably going to migrate to a more secure hashing
     algorithm.

@@ -35,7 +35,7 @@ A repository (or repo) is a top-level directory of files and directories that is
 
 In the past, developers would often directly push to or pull from each other's local repositories, but nowadays most projects will host their VCS on either a private server, or trust of the many web-based version control service providers. The main players in this field are [GitHub](https://www.github.com), [BitBucket](https://www.bitbucket.org) and [GitLab](https://www.gitlab.com), which each provide similar web interfaces to Git (or otherwise) repositories. These web services are very useful to individual users who don't want to run their own server, and in fact this very tutorial is hosted on [GitHub](https://www.github.com/ml-evs/part2-computing-git-tutorial). Open source software has really benefited from these web-facing services that provide centralised, discoverable web pages for projects, as well as ways to talk to and raise issues with developers, lowering the bar to making contributions yourself. Additionally, web-based services allow for the automation of many useful checks on software, as we shall see in the [test-driven development](#test-driven-development) section.
 
-Each provider has its own advantages and disadvntages to consider but for our usage they are all broadly similar (and all allow unlimited private repos for free, often providing extra benefits for students [^students]). One of the useful features of distributed VCS is that you can easily transfer your entire code history to a different provider, since you are constantly mirroring your own version of the project locally [^microsoft].
+Each provider has its own advantages and disadvantages to consider but for our usage they are all broadly similar (and all allow unlimited private repos for free, often providing extra benefits for students [^students]). One of the useful features of distributed VCS is that you can easily transfer your entire code history to a different provider, since you are constantly mirroring your own version of the project locally [^microsoft].
 
 ### What is a commit?
 
@@ -79,7 +79,14 @@ $ git config --global user.email "<your_email_here>"
 
 #### Example 1.1: A Contrived Example of a Local Repository
 
-In this example, we will make a local Git repository, add some files to it, commit them, make some changes, then commit the changes. Very exciting. First, lets make a file with some text in it, by reciting Moby Dick from memory...
+In this example, we will make a local Git repository, add some files to it, commit them, make some changes, then commit the changes. Very exciting. First, make a new folder and tell Git that you want it to be a repository:
+```
+$ mkdir git_example_1
+$ cd git_example_1
+$ git init
+```
+
+Now, lets make a file with some text in it, by reciting Moby Dick from memory...
 
 ```
 $ echo "Call me Moby. Some years ago - never mind how long precisely - having little or no money in my purse, and nothing particular to interest me on shore, I thought I would sail about a little and see the water part of the world." >> moby.txt
@@ -241,7 +248,7 @@ which we can give any name we want. GitHub tells me that
 `part2-computing-exercises` is a fine name, we can select whether we want to the
 repository to be private or public, and then we can decide whether we want to
 select a license for the code <sup href='#license'>[^license]</sup>. After
-creating the remote repository, we will be provided with a url and some
+creating the remote repository, we will be provided with a URL and some
 instructions on how to set up our local copy; this example will expand those
 instructions below.
 
@@ -270,7 +277,7 @@ branches  config  description  HEAD  hooks  info  objects  refs
 
 A call of `git status` will tell us that we are on the master branch, have no
 commits, and some untracked files. In order to begin tracking files in the
-`exercise1/` folder, we "stage" them for comitting using `git add`:
+`exercise1/` folder, we "stage" them for committing using `git add`:
 
 ```
 $ git add exercise1
@@ -295,7 +302,7 @@ Changes to be committed:
 
 ```
 
-The files are now ready to be commited, and a simple `git commit` will bring up
+The files are now ready to be committed, and a simple `git commit` will bring up
 the editor for us to enter our commit message. 
 
 > Notice how only the core source files/outputs are included in the repository.
@@ -356,7 +363,7 @@ Tell me which (if any) tracked files have been changed in my current working dir
 
 #### `add`
 
-Register the current state of this file with Git, without comitting it (yet).
+Register the current state of this file with Git, without committing it (yet).
 
 > `git add version_control.md`
 
@@ -368,7 +375,7 @@ Take a snapshot of the current changes, and give that snapshot a descriptive mes
 
 #### `diff`
 
-Show the uncommited (well, strictly unstaged) changes to all files in the repository, or for a particular file if requested, as a "diff" (i.e. the difference) between the current state and previously commited state (by default, can alternatively view changes between any two previous commits).
+Show the uncommitted (well, strictly unstaged) changes to all files in the repository, or for a particular file if requested, as a "diff" (i.e. the difference) between the current state and previously committed state (by default, can alternatively view changes between any two previous commits).
 
 > `git diff version_control.md`
 
@@ -386,7 +393,7 @@ Download any "new history" on the remote server for this repository, making sure
 
 #### `checkout`
 
-If called on a file that has been modified, delete those changes and rever the state of the file back to the last commit (the `HEAD` state). Also used when branching (see `git help checkout` for more).
+If called on a file that has been modified, delete those changes and revert the state of the file back to the last commit (the `HEAD` state). Also used when branching (see `git help checkout` for more).
 
 > `git checkout version_control.md`
 
@@ -404,7 +411,7 @@ Does the same as Linux's `mv`, but keeps tracking the file in Git. Otherwise, Gi
 
 #### `rm`
 
-Remove a file from disk, and from any further Git tracking (the deletion of the file will need to be commited). The history of the file will remain under version control, as well as all previous versions.
+Remove a file from disk, and from any further Git tracking (the deletion of the file will need to be committed). The history of the file will remain under version control, as well as all previous versions.
 
 > `git rm old_file.txt`
 
@@ -433,7 +440,7 @@ Here are some extra Git subcommands that you will eventually find a use for in m
 - For open source projects, [how to choose a software license](https://choosealicense.com/).
 - The [Journal of Open Source Software (JOSS)](https://joss.theoj.org) takes submissions as git
   repositories and uses GitHub's issue tracker for the [review process](https://github.com/openjournals/joss-reviews).
-- The [Sustainble Software Institute](https://www.software.ac.uk/) is a UK-wide push for improving the quality of research software, along with the [Research Software Engineer](https://rse.ac.uk/) (RSE) movement to create new jobs titles for those in academia working predominantly on software.
+- The [Software Sustainability Institute](https://www.software.ac.uk/) is a UK-wide push for improving the quality of research software, along with the [Research Software Engineer](https://rse.ac.uk/) (RSE) movement to create new jobs titles for those in academia working predominantly on software.
 
 [^git]: Linus Torvalds started writing Git on April 3rd 2005, it was then hosting its own source code by April 7th ([source](https://marc.info/?l=git&m=117254154130732)), and then was hosting the entire Linux kernel (2.6.12-rc2) by April 16th.  
 
@@ -442,7 +449,7 @@ Here are some extra Git subcommands that you will eventually find a use for in m
 [^devs]: ~14,500 people posted on the Linux kernel mailing list between 1995 and 2000, according to [this report](https://web.archive.org/web/20070927194148/http://pascal.case.unibz.it/retrieve/3302/lee00linux.pdf).
 
 [^sha1]: The first SHA-1 "hash collision" (different files contents with the
-  same hash: could allow for malicious file injection) [occured in
+  same hash: could allow for malicious file injection) [occurred in
   2017](https://www.theregister.co.uk/2017/02/23/google_first_sha1_collision) so
   Git is probably going to migrate to a more secure hashing algorithm.
 
