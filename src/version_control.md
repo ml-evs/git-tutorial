@@ -2,7 +2,7 @@
 % Matthew Evans
 % Part II Computational Physics, Lent 2019
 
-This content is hosted at <https://github.com/ml-evs/part2-computing-git-tutorial> under the MIT license (i.e. do what you want with this material). Any queries/corrections can be raised as issues/pull requests on GitHub.
+This content is hosted at <https://github.com/ml-evs/part2-computing-git-tutorial> under the MIT license (i.e. do what you want with this material). The talk slides and notes are available as PDFs. Any queries/corrections can be raised as issues/pull requests on GitHub or Cambridge people can email me (me388) directly if they would prefer.
 
 ## Introduction
 
