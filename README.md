@@ -6,8 +6,8 @@
       - [What is a commit?](#what-is-a-commit)
   - [Worked examples](#worked-examples)
       - [Setup](#setup)
-      - [Example 1.1: a contrived local
-        repository](#example-1.1-a-contrived-local-repository)
+      - [Example 1.1: A Contrived Example of a Local
+        Repository](#example-1.1-a-contrived-example-of-a-local-repository)
       - [Example 1.2: Remote version
         control](#example-1.2-remote-version-control)
   - [More advanced usage](#more-advanced-usage)
@@ -188,7 +188,7 @@ The next thing to do is register who you are to Git:
     $ git config --global user.name "<your_name_here>"
     $ git config --global user.email "<your_email_here>"
 
-#### Example 1.1: a contrived local repository
+#### Example 1.1: A Contrived Example of a Local Repository
 
 In this example, we will make a local Git repository, add some files to
 it, commit them, make some changes, then commit the changes. Very

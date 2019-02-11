@@ -77,7 +77,7 @@ $ git config --global user.name "<your_name_here>"
 $ git config --global user.email "<your_email_here>"
 ```
 
-#### Example 1.1: a contrived local repository
+#### Example 1.1: A Contrived Example of a Local Repository
 
 In this example, we will make a local Git repository, add some files to it, commit them, make some changes, then commit the changes. Very exciting. First, lets make a file with some text in it, by reciting Moby Dick from memory...
 
