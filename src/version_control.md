@@ -433,6 +433,8 @@ Here are some extra Git subcommands that you will eventually find a use for in m
 ### Useful links
 
 - The [Git website](https://git-scm.com/) has lots of useful resources for learning Git in more detail.
+- A more in-depth tutorial from the
+  [EPCC](http://www.archer.ac.uk/training/virtual/2018-07-25-Version-Control-Git/VersionControlwithGit.pdf).
 - List of GUIs for Git on the [Git website](https://git-scm.com/downloads/guis).
 - The Git source code is itself hosted on [Github](https://github.com/git/git).
 - Atlassian (owners of BitBucket) provide a more thorough [cheatsheet of git commands](https://www.atlassian.com/dam/jcr:8132028b-024f-4b6b-953e-e68fcce0c5fa/atlassian-git-cheatsheet.pdf)
