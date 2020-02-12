@@ -18,12 +18,11 @@
       - [Basic subcommand cheatsheet](#basic-subcommand-cheatsheet)
       - [Useful links](#useful-links)
 
-This content is hosted at
-<https://github.com/ml-evs/part2-computing-git-tutorial> under the MIT
-license (i.e. do what you want with this material). The talk slides and
-notes are available as PDFs. Any queries/corrections can be raised as
-issues/pull requests on GitHub or Cambridge people can email me (me388)
-directly if they would prefer.
+This content is hosted at <https://github.com/ml-evs/git-tutorial> under
+the MIT license (i.e. do what you want with this material). The talk
+slides and notes are available as PDFs. Any queries/corrections can be
+raised as issues/pull requests on GitHub or Cambridge people can email
+me (`me388`) directly if they would prefer.
 
 ## Introduction
 
@@ -121,10 +120,10 @@ and [GitLab](https://www.gitlab.com), which each provide similar web
 interfaces to Git (or otherwise) repositories. These web services are
 very useful to individual users who don’t want to run their own server,
 and in fact this very tutorial is hosted on
-[GitHub](https://www.github.com/ml-evs/part2-computing-git-tutorial).
-Open source software has really benefited from these web-facing services
-that provide centralised, discoverable web pages for projects, as well
-as ways to talk to and raise issues with developers, lowering the bar to
+[GitHub](https://www.github.com/ml-evs/git-tutorial). Open source
+software has really benefited from these web-facing services that
+provide centralised, discoverable web pages for projects, as well as
+ways to talk to and raise issues with developers, lowering the bar to
 making contributions yourself. Additionally, web-based services allow
 for the automation of many useful checks on software, as we shall see in
 the [test-driven development](#test-driven-development) section.
@@ -170,8 +169,7 @@ Here are some practical questions you might ask about commits:
 ## Worked examples
 
 You may find these examples easier to follow online, where text can be
-copied more easily:
-<https://www.github.com/ml-evs/part2-computing-git-tutorial>.
+copied more easily: <https://www.github.com/ml-evs/git-tutorial>.
 
 #### Setup
 
@@ -453,9 +451,8 @@ Finally, we can now push our first commit to GitHub’s servers.
 If you want to investigate GitHub’s interface for e.g. listing commits,
 providing diffs, creating issues and making pull requests, feel free to
 look at the repository for this tutorial,
-https://github.com/ml-evs/part2-computing-git-tutorial. If you spot any
-mistakes or typos, you could even fork the repository and make a pull
-request\!
+https://github.com/ml-evs/git-tutorial. If you spot any mistakes or
+typos, you could even fork the repository and make a pull request\!
 
 ## More advanced usage
 
@@ -473,7 +470,7 @@ Coming soon…?
 
 Make your own local copy of a repository.
 
-> `git clone https://github.com/ml-evs/part2-computing-git-tutorial`.
+> `git clone https://github.com/ml-evs/git-tutorial`.
 
 #### `init`
 
