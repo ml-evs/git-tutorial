@@ -20,8 +20,10 @@
 
 This content is hosted at
 <https://github.com/ml-evs/part2-computing-git-tutorial> under the MIT
-license (i.e. do what you want with this material). Any
-queries/corrections can be raised as issues/pull requests on GitHub.
+license (i.e. do what you want with this material). The talk slides and
+notes are available as PDFs. Any queries/corrections can be raised as
+issues/pull requests on GitHub or Cambridge people can email me (me388)
+directly if they would prefer.
 
 ## Introduction
 
@@ -61,9 +63,9 @@ The aim of this tutorial is to teach basic concepts of version control
 that you might consider using for the coursework. A few hours of
 investment, and maybe some moments of confusion, will hopefully lead to
 a productivity boost. We shall work with the Git (`git`) version control
-system as, at the time of writing this, it dominates the market, with
-Subversion (`svn`) and Mercurial (`hg`) lagging behind, as evidenced by
-e.g. [Google trends](https://g.co/trends/CECvA).
+system as, at the time of writing this, it dominates the market with
+Subversion (`svn`) and Mercurial (`hg`) lagging behind (as evidenced by
+[Google trends](https://g.co/trends/CECvA)).
 
 ### What is Git?
 
@@ -75,12 +77,12 @@ developers worldwide <sup href='#devs'>\[3\]</sup>; whilst famous for
 creating Linux, many argue that Git is Linus Torvalds’ greatest
 technical achievement.
 
-`git`, like its forebears `svn` and `hg`, is what is called a
-distributed version control system. This means that there is no “master
-copy” of a project, and instead the entire history of a project is
-mirrored on the computer of every developer (and potentially user). This
-becomes extremely useful when multiple people are actively developing a
-project for reasons we shall touch on later.
+`git` is an example of what is called a distributed version control
+system. This means that there is no “master copy” of a project, and
+instead the entire history of a project is mirrored on the computer of
+every developer (and potentially user). This becomes extremely useful
+when multiple people are actively developing a project for reasons we
+shall touch on later.
 
 Git has somewhat of a reputation for being difficult to learn and
 master, due its 21 different subcommands, and their myriad options. Most
@@ -239,8 +241,7 @@ Another quick `git status` will show that there is now `nothing to
 commit, working tree clean`. We’re now ready to add the next sentence,
 which will let us look at a `diff` between the current state of our
 history (called `HEAD`). Git `diff` will open the diff in `less`, press
-Q to
-    quit.
+Q to quit.
 
     $ echo "The morning was so damp and misty that it was only with great difficulty that the day succeeded in breaking." >> moby.txt
     $ git diff
@@ -255,8 +256,7 @@ Q to
 Let’s commit this sentence. If you use `git commit` as before, you will
 notice that this change has not yet been “staged”. We can either run
 `git add moby.txt` to stage it (useful for commits with many files to be
-added), or just commit the file
-    directly:
+added), or just commit the file directly:
 
     $ git commit moby.txt -m 'Added another sentence of Moby Dick from memory'
 
@@ -586,6 +586,8 @@ for in more complex projects.
 
   - The [Git website](https://git-scm.com/) has lots of useful resources
     for learning Git in more detail.
+  - A more in-depth tutorial from the
+    [EPCC](http://www.archer.ac.uk/training/virtual/2018-07-25-Version-Control-Git/VersionControlwithGit.pdf).
   - List of GUIs for Git on the [Git
     website](https://git-scm.com/downloads/guis).
   - The Git source code is itself hosted on
