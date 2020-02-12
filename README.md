@@ -144,6 +144,9 @@ randomly-generated hash, providing a snapshot in time of the entire
 repository. It’s important to note that commits stack on top of each
 other (in the sense of stack memory: last in, first out).
 
+I have completely lost my mind and added a very meta-sentence here that
+someone should remove with a pull request.
+
 Here are some practical questions you might ask about commits:
 
   - How often should I commit?
@@ -456,7 +459,8 @@ typos, you could even fork the repository and make a pull request\!
 
 ## More advanced usage
 
-Coming soon…?
+Coming soon…? There are a couple of slides on branching and TDD if you
+want more info.
 
 ### Branching, merging and collaboration
 
