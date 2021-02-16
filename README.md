@@ -1,23 +1,3 @@
-  - [Introduction](#introduction)
-      - [What is version control and why should I
-        care?](#what-is-version-control-and-why-should-i-care)
-      - [What is Git?](#what-is-git)
-      - [What is a repository?](#what-is-a-repository)
-      - [What is a commit?](#what-is-a-commit)
-  - [Worked examples](#worked-examples)
-      - [Setup](#setup)
-      - [Example 1.1: A Contrived Example of a Local
-        Repository](#example-1.1-a-contrived-example-of-a-local-repository)
-      - [Example 1.2: Remote version
-        control](#example-1.2-remote-version-control)
-  - [More advanced usage](#more-advanced-usage)
-      - [Branching, merging and
-        collaboration](#branching-merging-and-collaboration)
-      - [Test-driven development](#test-driven-development)
-  - [Appendices](#appendices)
-      - [Basic subcommand cheatsheet](#basic-subcommand-cheatsheet)
-      - [Useful links](#useful-links)
-
 This content is hosted at <https://github.com/ml-evs/git-tutorial> under
 the MIT license (i.e. do what you want with this material). The talk
 slides and notes are available as PDFs. Any queries/corrections can be
@@ -239,7 +219,8 @@ Another quick `git status` will show that there is now `nothing to
 commit, working tree clean`. We’re now ready to add the next sentence,
 which will let us look at a `diff` between the current state of our
 history (called `HEAD`). Git `diff` will open the diff in `less`, press
-Q to quit.
+Q to
+    quit.
 
     $ echo "The morning was so damp and misty that it was only with great difficulty that the day succeeded in breaking." >> moby.txt
     $ git diff
@@ -254,7 +235,8 @@ Q to quit.
 Let’s commit this sentence. If you use `git commit` as before, you will
 notice that this change has not yet been “staged”. We can either run
 `git add moby.txt` to stage it (useful for commits with many files to be
-added), or just commit the file directly:
+added), or just commit the file
+    directly:
 
     $ git commit moby.txt -m 'Added another sentence of Moby Dick from memory'
 
@@ -621,7 +603,7 @@ for in more complex projects.
     which is actually so large it breaks the rendering of the scale
     (each division is 1 million lines of code).
 
-3.  \~14,500 people posted on the Linux kernel mailing list between 1995
+3.  ~14,500 people posted on the Linux kernel mailing list between 1995
     and 2000, according to [this
     report](https://web.archive.org/web/20070927194148/http://pascal.case.unibz.it/retrieve/3302/lee00linux.pdf).
 
