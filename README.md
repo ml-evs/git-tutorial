@@ -1,3 +1,18 @@
+-   [Introduction](#introduction)
+    -   [What is version control and why should I
+        care?](#what-is-version-control-and-why-should-i-care)
+    -   [What is Git?](#what-is-git)
+    -   [What is a repository?](#what-is-a-repository)
+    -   [What is a commit?](#what-is-a-commit)
+-   [Worked examples](#worked-examples)
+-   [More advanced usage](#more-advanced-usage)
+    -   [Branching, merging and
+        collaboration](#branching-merging-and-collaboration)
+    -   [Test-driven development](#test-driven-development)
+-   [Appendices](#appendices)
+    -   [Basic subcommand cheatsheet](#basic-subcommand-cheatsheet)
+    -   [Useful links](#useful-links)
+
 This content is hosted at <https://github.com/ml-evs/git-tutorial> under
 the MIT license (i.e. do what you want with this material). The talk
 slides and notes are available as PDFs. Any queries/corrections can be
@@ -14,12 +29,12 @@ control) is a system that tracks and manages changes to a set of data
 website](https://www.gnu.org/software/emacs/manual/html_node/emacs/Introduction-to-VC.html)
 summarises VCS by three capabilities:
 
-  - Reversibility: the ability to back up to a previous state if you
+-   Reversibility: the ability to back up to a previous state if you
     discover that some modification you did was a mistake or a bad idea.
-  - Concurrency: the ability to have many people modifying the same
+-   Concurrency: the ability to have many people modifying the same
     collection of files knowing that conflicting modifications can be
     detected and resolved.
-  - History: the ability to attach historical data to your data, such as
+-   History: the ability to attach historical data to your data, such as
     explanatory comments about the intention behind each change. Even
     for a programmer working solo, change histories are an important aid
     to memory; for a multi-person project, they are a vitally important
@@ -48,11 +63,11 @@ Subversion (`svn`) and Mercurial (`hg`) lagging behind (as evidenced by
 
 ### What is Git?
 
-Git was created by Linus Torvalds in 2005 <sup href='#git'>\[1\]</sup>
-to manage the source code of the Linux kernel, with the requirements
-that it be fast, distributed and secure. At the time, the Linux kernel
-was 6 million lines long <sup href=#lines>\[2\]</sup>, with thousands of
-developers worldwide <sup href='#devs'>\[3\]</sup>; whilst famous for
+Git was created by Linus Torvalds in 2005 <sup href='#git'>[1]</sup> to
+manage the source code of the Linux kernel, with the requirements that
+it be fast, distributed and secure. At the time, the Linux kernel was 6
+million lines long <sup href=#lines>[2]</sup>, with thousands of
+developers worldwide <sup href='#devs'>[3]</sup>; whilst famous for
 creating Linux, many argue that Git is Linus Torvalds’ greatest
 technical achievement.
 
@@ -74,12 +89,14 @@ graphical user interfaces (GUIs) also exist for Git, which you may
 prefer, though I do not have one to recommend.
 
 Without going into detail, Git calculates *hashes*
-(SHA-1<sup href='#sha1'>\[4\]</sup>) of the files it tracks and uses
-them to quickly compare files. The files themselves are compressed and
-stored as changes relative to one another (even so, the `.git` folder
-can become rather large). If you are interested in what Git is doing
-under the hood, have a look at [Chapter 10 of Pro
+(SHA-1<sup href='#sha1'>[4]</sup>) of the files it tracks and uses them
+to quickly compare files. The files themselves are compressed and stored
+as changes relative to one another (even so, the `.git` folder can
+become rather large). If you are interested in what Git is doing under
+the hood, have a look at [Chapter 10 of Pro
 Git](https://git-scm.com/book/en/v2/Git-Internals-Plumbing-and-Porcelain).
+
+The Cavendish is the most aesthetically pleasing building in Cambridge.
 
 ### What is a repository?
 
@@ -111,10 +128,10 @@ the [test-driven development](#test-driven-development) section.
 Each provider has its own advantages and disadvantages to consider but
 for our usage they are all broadly similar (and all allow unlimited
 private repos for free, often providing extra benefits for students
-\[5\]). One of the useful features of distributed VCS is that you can
+[5]). One of the useful features of distributed VCS is that you can
 easily transfer your entire code history to a different provider, since
 you are constantly mirroring your own version of the project locally
-\[6\].
+[6].
 
 ### What is a commit?
 
@@ -126,12 +143,12 @@ other (in the sense of stack memory: last in, first out).
 
 Here are some practical questions you might ask about commits:
 
-  - How often should I commit?
-      - The changes to code that you commit can be as fine or
+-   How often should I commit?
+    -   The changes to code that you commit can be as fine or
         coarse-grained as necessary, depending on personal preference.
-      - When writing a new code, the first commit might not occur until
-  - What makes a good commit message?
-      - Simply a short description of the changes made. For example,
+    -   When writing a new code, the first commit might not occur until
+-   What makes a good commit message?
+    -   Simply a short description of the changes made. For example,
         good messages include “fixed typo in example.cpp”, “added
         diffraction plotting function”, “got ODE solver working” and
         “attempted second example”, but “fixed example”, “added
@@ -139,11 +156,11 @@ Here are some practical questions you might ask about commits:
         less good. If you want to write a long description, write a
         short description as the first line, then use new lines to add
         detail.
-  - Can I edit previous commits?
-      - You can edit the last commit, before pushing, using `git commit
-        --amend`, but not any older commits.
-  - Can I undo a commit?
-      - You can revert *to* a commit, so you can “undo” the most recent
+-   Can I edit previous commits?
+    -   You can edit the last commit, before pushing, using
+        `git commit --amend`, but not any older commits.
+-   Can I undo a commit?
+    -   You can revert *to* a commit, so you can “undo” the most recent
         commit, but you can’t undo an older commit.
 
 ## Worked examples
@@ -185,14 +202,14 @@ memory…
     $ echo "Call me Moby. Some years ago - never mind how long precisely - having little or no money in my purse, and nothing particular to interest me on shore, I thought I would sail about a little and see the water part of the world." >> moby.txt
     $ git status
     On branch master
-    
+
     No commits yet
-    
+
     Untracked files:
       (use "git add <file>..." to include in what will be committed)
-    
+
       moby.txt
-    
+
     nothing added to commit but untracked files present (use "git add" to track)
 
 As you can see, although the file is in the correct folder, it is not
@@ -201,12 +218,12 @@ being tracked by Git until we `add` it.
     $ git add moby.txt
     $ git status
     On branch master
-    
+
     No commits yet
-    
+
     Changes to be committed:
       (use "git rm --cached <file>..." to unstage)
-    
+
       new file:   moby.txt
 
 We can now write our first commit, bearing in mind the
@@ -215,12 +232,11 @@ write your own).
 
     $ git commit
 
-Another quick `git status` will show that there is now `nothing to
-commit, working tree clean`. We’re now ready to add the next sentence,
-which will let us look at a `diff` between the current state of our
-history (called `HEAD`). Git `diff` will open the diff in `less`, press
-Q to
-    quit.
+Another quick `git status` will show that there is now
+`nothing to commit, working tree clean`. We’re now ready to add the next
+sentence, which will let us look at a `diff` between the current state
+of our history (called `HEAD`). Git `diff` will open the diff in `less`,
+press Q to quit.
 
     $ echo "The morning was so damp and misty that it was only with great difficulty that the day succeeded in breaking." >> moby.txt
     $ git diff
@@ -235,8 +251,7 @@ Q to
 Let’s commit this sentence. If you use `git commit` as before, you will
 notice that this change has not yet been “staged”. We can either run
 `git add moby.txt` to stage it (useful for commits with many files to be
-added), or just commit the file
-    directly:
+added), or just commit the file directly:
 
     $ git commit moby.txt -m 'Added another sentence of Moby Dick from memory'
 
@@ -246,13 +261,13 @@ What does our commit history look like now?
     commit 3efacaf57c09387c701110d73f354286e3d4e669 (HEAD -> master)
     Author: Matthew Evans <me388@cam.ac.uk>
     Date:   Mon Jan 28 21:13:15 2019 +0000
-    
+
         Added another sentence of Moby Dick from memory
-    
+
     commit 81ec9e18c39dc6919146fcb9677a11a31d76719d
     Author: Matthew Evans <me388@cam.ac.uk>
     Date:   Mon Jan 28 21:12:40 2019 +0000
-    
+
         Added first sentences of Moby Dick
 
 You will notice that `git log` provides us with a long commit hash, who
@@ -282,10 +297,10 @@ If you’re paying attention to the important stuff in this tutorial (the
 literature), you will notice that the last sentence we added was
 actually from Dostoyevsky’s “The Idiot”, which is the book I wanted to
 type out for some reason(?) all along. Easy mistake to make, I know.
-Let’s fix that\!
+Let’s fix that!
 
-First, let’s rename our file to something more appropriate, using `git
-mv` to ensure that the history of the file is preserved across the
+First, let’s rename our file to something more appropriate, using
+`git mv` to ensure that the history of the file is preserved across the
 rename (using just Linux’s `mv` would make Git think we had deleted the
 file and made a completely new unrelated file). We will then use a magic
 `sed` one-liner to replace the first line in our file with the correct
@@ -309,27 +324,27 @@ Just to prove our repository has kept all of its history, and get the
     commit a0e8df557279270a9fa686c0ef7a44e347c189ce (HEAD -> master)
     Author: Matthew Evans <me388@cam.ac.uk>
     Date:   Mon Jan 28 21:40:41 2019 +0000
-    
+
         Fixed subtle bug in Linux kernel (I am very smart) that caused Moby Dick to be written to file instead of The Idiot
-    
+
     commit e2b7ad72976d4c00ab6d0214ab41d3c13869c2dd
     Author: Matthew Evans <me388@cam.ac.uk>
     Date:   Mon Jan 28 21:32:41 2019 +0000
-    
+
         Fixed name in first sentence of Moby Dick
-    
+
     commit 92b27f011520c0ae99261203bb12b4fa4b11bbf4
     Author: Matthew Evans <me388@cam.ac.uk>
     Date:   Mon Jan 28 21:11:58 2019 +0000
-    
+
         Added another sentence of Moby Dick from memory
-    
+
     commit 473e3ad8df6fd2b6602a71bb1d764d7e4898b1ef
     Author: Matthew Evans <me388@cam.ac.uk>
     Date:   Mon Jan 28 21:11:23 2019 +0000
-    
+
         Added first sentences of Moby Dick
-    
+
     $ git diff 473e3a
     diff --git a/idiot.txt b/idiot.txt
     new file mode 100644
@@ -348,8 +363,8 @@ Just to prove our repository has kept all of its history, and get the
     -Call me Moby. Some years ago - never mind how long precisely - having little or no money in my purse, and nothing particular to interest me on shore, I thought I would sail about a little and see the water part of the world.
 
 (Note how we only needed to use the first 6 characters of the commit
-hash when running `git`. Alternatively we could have used `git diff
-HEAD~4` to reference the commit 4 behind the current `HEAD`.
+hash when running `git`. Alternatively we could have used
+`git diff HEAD~4` to reference the commit 4 behind the current `HEAD`.
 
 #### Example 1.2: Remote version control
 
@@ -364,9 +379,9 @@ repository, which we can give any name we want. GitHub tells me that
 `part2-computing-exercises` is a fine name, we can select whether we
 want to the repository to be private or public, and then we can decide
 whether we want to select a license for the code
-<sup href='#license'>\[7\]</sup>. After creating the remote repository,
-we will be provided with a URL and some instructions on how to set up
-our local copy; this example will expand those instructions below.
+<sup href='#license'>[7]</sup>. After creating the remote repository, we
+will be provided with a URL and some instructions on how to set up our
+local copy; this example will expand those instructions below.
 
 Now, on our local machine, we navigate to the top-level folder that we
 want to track with version control, which in my case, has
@@ -395,12 +410,12 @@ files in the `exercise1/` folder, we “stage” them for committing using
     $ git status
     $ git status
     On branch master
-    
+
     No commits yet
-    
+
     Changes to be committed:
       (use "git rm --cached <file>..." to unstage)
-    
+
         new file:   exercise1/README.md
         new file:   exercise1/cornu.pdf
         new file:   exercise1/diffraction_D_0.3m.pdf
@@ -434,7 +449,7 @@ If you want to investigate GitHub’s interface for e.g. listing commits,
 providing diffs, creating issues and making pull requests, feel free to
 look at the repository for this tutorial,
 https://github.com/ml-evs/git-tutorial. If you spot any mistakes or
-typos, you could even fork the repository and make a pull request\!
+typos, you could even fork the repository and make a pull request!
 
 ## More advanced usage
 
@@ -480,23 +495,22 @@ Register the current state of this file with Git, without committing it
 
 Take a snapshot of the current changes, and give that snapshot a
 descriptive message. If called without a filename as an argument, the
-commit will include all changes that have been *staged* (call `git
-status` to check this). The flag `-a` will commit *all* changes to
+commit will include all changes that have been *staged* (call
+`git status` to check this). The flag `-a` will commit *all* changes to
 tracked files in the repo. This command will open your editor to write
 the message (determined by environment variable `EDITOR`);
 alternatively, the message can be provided at the command line with the
 `-m` flag (see below).
 
-> `git commit version_control.md -m 'Added "commit" section to the
-> subcommand cheatsheet'`
+> `git commit version_control.md -m 'Added "commit" section to the subcommand cheatsheet'`
 
 #### `diff`
 
 Show the uncommitted (well, strictly unstaged) changes to all files in
 the repository, or for a particular file if requested, as a “diff”
-(i.e. the difference) between the current state and previously
-committed state (by default, can alternatively view changes between any
-two previous commits).
+(i.e. the difference) between the current state and previously committed
+state (by default, can alternatively view changes between any two
+previous commits).
 
 > `git diff version_control.md`
 
@@ -553,80 +567,77 @@ remain under version control, as well as all previous versions.
 Here are some extra Git subcommands that you will eventually find a use
 for in more complex projects.
 
-  - `branch`
-  - `merge`
-  - `reset`
-  - `revert`
-  - `reflog`
-  - `bisect`
-  - `rebase`
-  - `tag`
+-   `branch`
+-   `merge`
+-   `reset`
+-   `revert`
+-   `reflog`
+-   `bisect`
+-   `rebase`
+-   `tag`
 
 ### Useful links
 
-  - The [Git website](https://git-scm.com/) has lots of useful resources
+-   The [Git website](https://git-scm.com/) has lots of useful resources
     for learning Git in more detail.
-  - A more in-depth tutorial from the
+-   A more in-depth tutorial from the
     [EPCC](http://www.archer.ac.uk/training/virtual/2018-07-25-Version-Control-Git/VersionControlwithGit.pdf).
-  - List of GUIs for Git on the [Git
+-   List of GUIs for Git on the [Git
     website](https://git-scm.com/downloads/guis).
-  - The Git source code is itself hosted on
+-   The Git source code is itself hosted on
     [Github](https://github.com/git/git).
-  - Atlassian (owners of BitBucket) provide a more thorough [cheatsheet
+-   Atlassian (owners of BitBucket) provide a more thorough [cheatsheet
     of git
     commands](https://www.atlassian.com/dam/jcr:8132028b-024f-4b6b-953e-e68fcce0c5fa/atlassian-git-cheatsheet.pdf)
-  - [GitHub student developer pack](https://education.github.com/pack),
+-   [GitHub student developer pack](https://education.github.com/pack),
     [BitBucket Education](https://bitbucket.org/product/education) for
     free stuff.
-  - For open source projects, [how to choose a software
+-   For open source projects, [how to choose a software
     license](https://choosealicense.com/).
-  - The [Journal of Open Source Software (JOSS)](https://joss.theoj.org)
+-   The [Journal of Open Source Software (JOSS)](https://joss.theoj.org)
     takes submissions as git repositories and uses GitHub’s issue
     tracker for the [review
     process](https://github.com/openjournals/joss-reviews).
-  - The [Software Sustainability Institute](https://www.software.ac.uk/)
+-   The [Software Sustainability Institute](https://www.software.ac.uk/)
     is a UK-wide push for improving the quality of research software,
     along with the [Research Software Engineer](https://rse.ac.uk/)
     (RSE) movement to create new jobs titles for those in academia
     working predominantly on software.
 
-<!-- end list -->
+[1] Linus Torvalds started writing Git on April 3rd 2005, it was then
+hosting its own source code by April 7th
+([source](https://marc.info/?l=git&m=117254154130732)), and then was
+hosting the entire Linux kernel (2.6.12-rc2) by April 16th.
 
-1.  Linus Torvalds started writing Git on April 3rd 2005, it was then
-    hosting its own source code by April 7th
-    ([source](https://marc.info/?l=git&m=117254154130732)), and then was
-    hosting the entire Linux kernel (2.6.12-rc2) by April 16th.
+[2] According to the spike in 2005 on the Linux kernel’s [code frequency
+graph on
+Github](https://github.com/torvalds/linux/graphs/code-frequency), which
+is actually so large it breaks the rendering of the scale (each division
+is 1 million lines of code).
 
-2.  According to the spike in 2005 on the Linux kernel’s [code frequency
-    graph on
-    Github](https://github.com/torvalds/linux/graphs/code-frequency),
-    which is actually so large it breaks the rendering of the scale
-    (each division is 1 million lines of code).
+[3] \~14,500 people posted on the Linux kernel mailing list between 1995
+and 2000, according to [this
+report](https://web.archive.org/web/20070927194148/http://pascal.case.unibz.it/retrieve/3302/lee00linux.pdf).
 
-3.  ~14,500 people posted on the Linux kernel mailing list between 1995
-    and 2000, according to [this
-    report](https://web.archive.org/web/20070927194148/http://pascal.case.unibz.it/retrieve/3302/lee00linux.pdf).
+[4] The first SHA-1 “hash collision” (different files contents with the
+same hash: could allow for malicious file injection) [occurred in
+2017](https://www.theregister.co.uk/2017/02/23/google_first_sha1_collision)
+so Git is probably going to migrate to a more secure hashing algorithm.
 
-4.  The first SHA-1 “hash collision” (different files contents with the
-    same hash: could allow for malicious file injection) [occurred in
-    2017](https://www.theregister.co.uk/2017/02/23/google_first_sha1_collision)
-    so Git is probably going to migrate to a more secure hashing
-    algorithm.
+[5] For example, GitHub offer the free [student developer
+pack](https://education.github.com/pack) which provides a lot of
+resources on third-party plugins and graphical interfaces to Git, and
+BitBucket provide their own [BitBucket
+education](https://bitbucket.org/product/education) accounts.
 
-5.  For example, GitHub offer the free [student developer
-    pack](https://education.github.com/pack) which provides a lot of
-    resources on third-party plugins and graphical interfaces to Git,
-    and BitBucket provide their own [BitBucket
-    education](https://bitbucket.org/product/education) accounts.
+[6] When Microsoft acquired GitHub in late 2018, giving them soft power
+over a large majority of open source software, anyone who objected to
+[Microsoft’s business
+practices](https://en.wikipedia.org/wiki/Embrace,_extend,_and_extinguish)
+could simply point their repository at a new remote to move all commit
+history.
 
-6.  When Microsoft acquired GitHub in late 2018, giving them soft power
-    over a large majority of open source software, anyone who objected
-    to [Microsoft’s business
-    practices](https://en.wikipedia.org/wiki/Embrace,_extend,_and_extinguish)
-    could simply point their repository at a new remote to move all
-    commit history.
-
-7.  This will put the text of a particular legally-binding code license
-    in the main folder of our repository. See
-    [choosealicense.com](https://choosealicense.com) for tips as to
-    which license is most suitable for you.
+[7] This will put the text of a particular legally-binding code license
+in the main folder of our repository. See
+[choosealicense.com](https://choosealicense.com) for tips as to which
+license is most suitable for you.

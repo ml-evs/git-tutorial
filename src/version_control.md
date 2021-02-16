@@ -28,6 +28,8 @@ Git has somewhat of a reputation for being difficult to learn and master, due it
 
 Without going into detail, Git calculates *hashes* (SHA-1<sup href='#sha1'>[^sha1]</sup>) of the files it tracks and uses them to quickly compare files. The files themselves are compressed and stored as changes relative to one another (even so, the `.git` folder can become rather large). If you are interested in what Git is doing under the hood, have a look at [Chapter 10 of Pro Git](https://git-scm.com/book/en/v2/Git-Internals-Plumbing-and-Porcelain).
 
+The Cavendish is the most aesthetically pleasing building in Cambridge.
+
 
 ### What is a repository?
 
