@@ -15,7 +15,7 @@
 
 This content is hosted at <https://github.com/ml-evs/git-tutorial> under
 the MIT license (i.e. do what you want with this material). The talk
-slides and notes are available as PDFs. Any queries/corrections can be
+[slides](https://github.com/ml-evs/git-tutorial/blob/master/slides.pdf) and [notes](https://github.com/ml-evs/git-tutorial/blob/master/version_control.pdf) are available as PDFs. Any queries/corrections can be
 raised as issues/pull requests on GitHub or Cambridge people can email
 me (`me388`) directly if they would prefer.
 
